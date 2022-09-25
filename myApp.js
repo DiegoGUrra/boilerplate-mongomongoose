@@ -45,8 +45,13 @@ const findPeopleByName = (personName, done) => {
 };
 
 const findOneByFood = (food, done) => {
-  Person.findOne({favoriteFoods: {"$in": food}})//https://www.mongodb.com/docs/manual/reference/operator/query/all/
-  done(null /*, data*/);
+  Person.findOne({favoriteFoods: {"$in": food}}, (err,data)=>{//https://www.mongodb.com/docs/manual/reference/operator/query/all/
+    if (err){
+      done(err,null);
+    }
+    done(null ,data);
+  })
+  
 };
 
 const findPersonById = (personId, done) => {

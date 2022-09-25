@@ -110,7 +110,7 @@ const removeManyPeople = (done) => {
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
-  Person.find({favoriteFoods: {"$in": foodToSearch}}).sort({name:true}).limit(2).select({name:true,favoriteFoods:true}).exec( (err,data)=>{//https://www.mongodb.com/docs/manual/reference/operator/query/all/
+  Person.find({favoriteFoods: {"$in": foodToSearch}}).sort({name:1}).limit(2).select({name:true,favoriteFoods:true}).exec( (err,data)=>{//https://www.mongodb.com/docs/manual/reference/operator/query/all/
     if (err){
       done(err,null);
     }
